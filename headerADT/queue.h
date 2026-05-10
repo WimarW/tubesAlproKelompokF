@@ -20,8 +20,12 @@ void createQueue(Queue *q){
     q->tail = -1;
     q->list = (webPage*) malloc(MAX_QUEUE*sizeof(webPage));
 }
-bool isEmpty(Queue q);
-bool isFull(Queue q);
+bool isEmpty(Queue q){
+    return q.head == -1 || q.tail == -1 || q.list == NULL;
+}
+bool isFull(Queue q){
+    return q.tail - q.head + 1 == MAX_QUEUE;
+}
 //Menambahkan webPage pada queue di tail
 void enqueue(Queue *q, webPage);
 //Menghapus webPage pada queue di head
