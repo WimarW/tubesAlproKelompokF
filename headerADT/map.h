@@ -8,10 +8,10 @@
 
 //Nanti juga hrs implement cara buat ngitung jumlah Entry krn Cache ada Maxnya
 
-typedef struct {
+typedef struct Entry {
     char* key; // Pake ID
     webPage page;
-    struct* entryNext;
+    struct Entry* entryNext;
 } Entry;
 
 typedef struct {

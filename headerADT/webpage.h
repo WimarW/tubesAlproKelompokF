@@ -5,6 +5,6 @@ typedef struct {
     int id;
     char *url; // Dinamis nanti di malloc saat input/diganti
     char *content; // Dinamis nanti di malloc saat input/diganti
-} WebPage;
+} webPage;
 
 #endif

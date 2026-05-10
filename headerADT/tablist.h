@@ -3,10 +3,11 @@
 
 #include "webpage.h"
 #include "stack.h"
-
+#include <stdbool.h>
+#include <stdio.h>
 //Kasi cara buat keep track jumlah tab karena ada max tab amount
 
-typedef struct {
+typedef struct Node {
     webPage currentPage; // Halaman saat ini
     Stack forward; // Stack yang berisi History Tab Maju
     Stack back; // Stack yang berisi History Tab mundur
@@ -15,25 +16,31 @@ typedef struct {
     struct Node* prev; // Pointer to prev node
 } Node; // Setiap Node adalah Tab sendiri
 
+typedef struct {
+    Node* head;
+    Node* tail;
+    int currentSize;
+} TabList;
+
 
 // =====ADT Doubly Linked List=====
 // Pointer prev == Null if its head node
 // Pointer next == Null if its tail node
 // Membuat node dengan Node next dan prev NULL
+void createTabList(TabList* L, int max);
 Node* createNode (webPage data); 
 
 //prosedur memasukan node baru di bagian akhir list
-void insertAtTail(Node** head, webPage data); // Bs dikasi input webPage default atau gimana??
+void insertAtTail(TabList* L, webPage data); // Bs dikasi input webPage default atau gimana??
 //prosedur memasukan node baru di bagian awal list
-void insertAtHead(Node** head, int data);
+void insertAtHead(TabList* L, int data);
 //prosedur insert node pada posisi tertentu. Node head = posisi 1
-void insertAtPosition(Node** head, int data, int position)
+void insertAtPosition(TabList* L, int data, int position);
 //Menghapus node head
-void deleteHead(Node** head);
+void deleteHead(TabList* L);
 //Menghapus node tail
-void deleteTail(Node** tail);
-
-void deleteAtPosition(Node** tab);
+void deleteTail(TabList* L);
+void deleteAtPosition(TabList* L, int position);
 
 
 // ====Fungsi navigasi Tab ==== TBD

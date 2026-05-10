@@ -7,9 +7,7 @@
 #include <stdbool.h>
 
 #define initialSize 20
-
 typedef int ElType;
-
 
 typedef struct {
     int nEff;

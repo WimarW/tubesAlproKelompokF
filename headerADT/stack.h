@@ -1,10 +1,12 @@
 #ifndef STACK_H
 #define STACK_H
 #include "webpage.h"
-#define capacity 20
+
+#include <stdio.h>
+#include <stdbool.h>
 
 typedef struct {
-    WebPage arr[capacity];
+    webPage *arr; // Ukuran di malloc saat setup di main.
     int idxTop;
 } Stack;
 
