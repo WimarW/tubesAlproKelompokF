@@ -19,7 +19,9 @@ typedef struct {
     node *buffer; // Dialokasisakn nanti seacara dinamis karena ada max page number
 }Set;
 
-void createSet(Set* s);
+void createSet(Set* s){
+    s->length = 0;
+}
 bool isEmpty(Set s);
 bool isFull(Set s);
 int length(Set s); // return jumlah element
