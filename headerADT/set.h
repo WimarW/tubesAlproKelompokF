@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#define MAX_LEN 10
+
 // Kalo mau buat searchingnya lebih cepet buat setnya jadi Binary Search Tree diurutin berdasarkan Url pake strcmp(??)
 
 typedef struct {
@@ -25,7 +27,9 @@ void createSet(Set* s){
 bool isEmpty(Set s){
     return s.length == 0;
 }
-bool isFull(Set s);
+bool isFull(Set s){
+    return s.length == 
+}
 int length(Set s); // return jumlah element
 bool isInSet(Set *s, webPage x); //Cek apakah webPage x ada di set 
 
