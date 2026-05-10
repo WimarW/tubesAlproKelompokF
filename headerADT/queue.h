@@ -15,7 +15,11 @@ typedef struct {
 }Queue;
 
 //Membuat nilai head dan tail -1 
-void createQueue(Queue *q);
+void createQueue(Queue *q){
+    q->head = -1;
+    q->tail = -1;
+    q->list = (webPage*) malloc(MAX_QUEUE*sizeof(webPage));
+}
 bool isEmpty(Queue q);
 bool isFull(Queue q);
 //Menambahkan webPage pada queue di tail
