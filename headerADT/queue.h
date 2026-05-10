@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#define MAX_QUEUE 100
+
 typedef struct {
     webPage *list; //Akan di allocate secara dinamis nanti karena ada max queue sesuai dengan config
     int head;
