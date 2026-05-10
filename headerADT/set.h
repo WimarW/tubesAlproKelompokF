@@ -11,8 +11,8 @@
 // Kalo mau buat searchingnya lebih cepet buat setnya jadi Binary Search Tree diurutin berdasarkan Url pake strcmp(??)
 
 typedef struct {
-    int *l;
-    int *r;
+    int l;
+    int r;
     webPage w;
 }node;
 
@@ -33,6 +33,11 @@ bool isFull(Set s){
 int length(Set s){
     return s.length;
 } // return jumlah element
-bool isInSet(Set *s, webPage x); //Cek apakah webPage x ada di set 
+bool isInSet(Set *s, webPage x, int idx){
+    if(idx == -1)return false;
+    if(s->buffer[idx].w.id == x.id) return true;
+    if(s->buffer[idx].w.id < x.id)return isInSet(s, x, s->buffer[idx].l);
+    return isInSet(s, x, s->buffer[idx].r);
+} //Cek apakah webPage x ada di set 
 
 #endif
