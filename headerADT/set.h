@@ -30,7 +30,9 @@ bool isEmpty(Set s){
 bool isFull(Set s){
     return s.length == MAX_LEN;
 }
-int length(Set s); // return jumlah element
+int length(Set s){
+    return s.length;
+} // return jumlah element
 bool isInSet(Set *s, webPage x); //Cek apakah webPage x ada di set 
 
 #endif
