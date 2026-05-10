@@ -28,7 +28,7 @@ bool isEmpty(Set s){
     return s.length == 0;
 }
 bool isFull(Set s){
-    return s.length == 
+    return s.length == MAX_LEN;
 }
 int length(Set s); // return jumlah element
 bool isInSet(Set *s, webPage x); //Cek apakah webPage x ada di set 
