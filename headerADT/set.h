@@ -42,12 +42,12 @@ bool isInSet(Set *s, webPage x, int idx){
 } //Cek apakah webPage x ada di set 
 
 void insert(Set *s, webPage x){
-    if(!isEmpty(*s) && isInSet(s, x, 0))return;
-    if(isEmpty){
+    if(isEmpty(*s)){
         s->buffer[0].w = x;
         s->buffer[0].l = -1;
         s->buffer[0].r = -1;
     }
+    if(!isEmpty(*s) && isInSet(s, x, 0))return;
     int idx = 0;
     while(s->buffer[idx].l != -1 || s->buffer[idx].r != -1){
         if(s->buffer[idx].w.id > x.id){
