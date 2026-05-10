@@ -22,7 +22,9 @@ typedef struct {
 void createSet(Set* s){
     s->length = 0;
 }
-bool isEmpty(Set s);
+bool isEmpty(Set s){
+    return s.length == 0;
+}
 bool isFull(Set s);
 int length(Set s); // return jumlah element
 bool isInSet(Set *s, webPage x); //Cek apakah webPage x ada di set 
