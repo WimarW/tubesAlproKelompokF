@@ -34,13 +34,12 @@ void addNodeToList (TabList* L , webPage page);
 //prosedur memasukan node baru di bagian akhir list
 void insertAtTail(TabList* L, webPage data); // Bs dikasi input webPage default atau gimana??
 //prosedur memasukan node baru di bagian awal list
-void insertAtHead(TabList* L, int data);
+void insertAtHead(TabList* L, webPage data);
 //prosedur insert node pada posisi tertentu. Node head = posisi 1
-void insertAtPosition(TabList* L, int data, int position);
+void insertAtPosition(TabList* L, webPage data, int position);
 //Menghapus node head
 void deleteHead(TabList* L);
 //Menghapus node tail
-void deleteTail(TabList* L);
 void deleteAtPosition(TabList* L, int position);
 
 
