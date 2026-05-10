@@ -20,6 +20,7 @@ typedef struct {
     Node* head;
     Node* tail;
     int currentSize;
+    int maxSize; // Diberi nilai saat setup di main
 } TabList;
 
 
@@ -28,8 +29,8 @@ typedef struct {
 // Pointer next == Null if its tail node
 // Membuat node dengan Node next dan prev NULL
 void createTabList(TabList* L, int max);
-Node* createNode (webPage data); 
-
+Node* createNode(TabList* L, webPage page) 
+void addNodeToList (TabList* L , webPage page); 
 //prosedur memasukan node baru di bagian akhir list
 void insertAtTail(TabList* L, webPage data); // Bs dikasi input webPage default atau gimana??
 //prosedur memasukan node baru di bagian awal list
