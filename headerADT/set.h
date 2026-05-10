@@ -9,8 +9,14 @@
 // Kalo mau buat searchingnya lebih cepet buat setnya jadi Binary Search Tree diurutin berdasarkan Url pake strcmp(??)
 
 typedef struct {
+    int *l;
+    int *r;
+    webPage w;
+}node;
+
+typedef struct {
     int length;
-    webPage *buffer; // Dialokasisakn nanti seacara dinamis karena ada max page number
+    node *buffer; // Dialokasisakn nanti seacara dinamis karena ada max page number
 }Set;
 
 void createSet(Set* s);
