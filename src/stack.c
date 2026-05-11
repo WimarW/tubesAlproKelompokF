@@ -1,76 +1,74 @@
 #include "stack.h"
 
-void CreateStack(Stack *S) {
-    S->top = -1;
+void createStack(Stack *S, int maxSize) {
+    S->arr = (webPage *) malloc(maxSize * sizeof(webPage));
+    S->idxTop = -1;
+    S->maxSize = maxSize;
 }
 
-int IsEmpty(Stack S) {
-    return S.top == -1;
+bool isStackEmpty(Stack S) {
+    return S.idxTop == -1;
 }
 
-int IsFull(Stack S) {
-    return S.top == MAX_STACK_SIZE - 1;
+bool isStackFull(Stack S) {
+    return S.idxTop == S.maxSize - 1;
 }
 
-int Push(Stack *S, const char *url) {
-    if (IsFull(*S)) return 0;
-    S->top++;
-    strncpy(S->data[S->top], url, MAX_URL_LENGTH - 1);
-    S->data[S->top][MAX_URL_LENGTH - 1] = '\0';
+int push(Stack *S, webPage val) {
+    if (isStackFull(*S)) return 0;
+    S->idxTop++;
+    S->arr[S->idxTop] = val;
     return 1;
 }
 
-int Pop(Stack *S, char *result) {
-    if (IsEmpty(*S)) return 0;
-    strncpy(result, S->data[S->top], MAX_URL_LENGTH - 1);
-    result[MAX_URL_LENGTH - 1] = '\0';
-    S->top--;
+webPage pop(Stack *S) {
+    webPage result = S->arr[S->idxTop];
+    S->idxTop--;
+    return result;
+}
+
+webPage peek(Stack S) {
+    return S.arr[S.idxTop];
+}
+
+int sizeStack(Stack S) {
+    return S.idxTop + 1;
+}
+
+void clearStack(Stack *S) {
+    S->idxTop = -1;
+}
+
+int getElementAt(Stack S, int index, webPage *result) {
+    if (index < 0 || index > S.idxTop) return 0;
+    *result = S.arr[index];
     return 1;
 }
 
-int Peek(Stack S, char *result) {
-    if (IsEmpty(S)) return 0;
-    strncpy(result, S.data[S.top], MAX_URL_LENGTH - 1);
-    result[MAX_URL_LENGTH - 1] = '\0';
-    return 1;
+void destroyStack(Stack *S) {
+    free(S->arr);
+    S->arr = NULL;
+    S->idxTop = -1;
+    S->maxSize = 0;
 }
 
-int SizeStack(Stack S) {
-    return S.top + 1;
-}
 
-void ClearStack(Stack *S) {
-    S->top = -1;
-}
-
-int GetElementAt(Stack S, int index, char *result) {
-    if (index < 0 || index > S.top) return 0;
-    strncpy(result, S.data[index], MAX_URL_LENGTH - 1);
-    result[MAX_URL_LENGTH - 1] = '\0';
-    return 1;
-}
-
-void PrintTabHistory(Stack backStack, Stack forwardStack, const char *currentUrl) {
+void printTabHistory(Stack backStack, Stack forwardStack, webPage *currentPage) {
     int i;
     int idx = 0;
-    char url[MAX_URL_LENGTH];
 
-    for (i = 0; i <= backStack.top; i++) {
-        strncpy(url, backStack.data[i], MAX_URL_LENGTH - 1);
-        url[MAX_URL_LENGTH - 1] = '\0';
-        printf("[%d] %s\n", idx, url);
+    for (i = 0; i <= backStack.idxTop; i++) {
+        printf("[%d] %s\n", idx, backStack.arr[i].url);
         idx++;
     }
 
-    if (currentUrl != NULL && currentUrl[0] != '\0') {
-        printf("[%d] %s  <- YOU ARE HERE\n", idx, currentUrl);
+    if (currentPage != NULL) {
+        printf("[%d] %s  <- YOU ARE HERE\n", idx, currentPage->url);
         idx++;
     }
 
-    for (i = forwardStack.top; i >= 0; i--) {
-        strncpy(url, forwardStack.data[i], MAX_URL_LENGTH - 1);
-        url[MAX_URL_LENGTH - 1] = '\0';
-        printf("[%d] %s\n", idx, url);
+    for (i = forwardStack.idxTop; i >= 0; i--) {
+        printf("[%d] %s\n", idx, forwardStack.arr[i].url);
         idx++;
     }
 
